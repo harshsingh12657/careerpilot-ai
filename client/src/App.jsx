@@ -6,6 +6,7 @@ import Dashboard from './pages/Dashboard';
 import ResumeAnalyzer from './pages/ResumeAnalyzer';
 import SkillGap from './pages/SkillGap';
 import CareerRoadmap from './pages/CareerRoadmap';
+import MockInterview from './pages/MockInterview';
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useAuth();
@@ -24,6 +25,7 @@ function AppRoutes() {
       <Route path="*" element={<Navigate to="/dashboard" />} />
       <Route path="/skills" element={<PrivateRoute><SkillGap /></PrivateRoute>} />
       <Route path="/roadmap" element={<PrivateRoute><CareerRoadmap /></PrivateRoute>} />
+      <Route path="/interview" element={<PrivateRoute><MockInterview /></PrivateRoute>} />
     </Routes>
   );
 }
