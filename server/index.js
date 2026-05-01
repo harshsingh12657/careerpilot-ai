@@ -17,6 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use('/api/auth', require('./routes/auth'));
+app.use('/api/resume', require('./routes/resume'));
 app.use((req, res, next) => {
   console.log('Body:', req.body);
   next();
