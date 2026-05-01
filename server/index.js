@@ -19,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/resume', require('./routes/resume'));
 app.use('/api/skills', require('./routes/skills'));
+app.use('/api/roadmap', require('./routes/roadmap'));
 
 app.get('/', (req, res) => {
   res.json({ message: '🚀 CareerPilot AI Server is running!' });

@@ -5,6 +5,7 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import ResumeAnalyzer from './pages/ResumeAnalyzer';
 import SkillGap from './pages/SkillGap';
+import CareerRoadmap from './pages/CareerRoadmap';
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useAuth();
@@ -22,6 +23,7 @@ function AppRoutes() {
       <Route path="/resume" element={<PrivateRoute><ResumeAnalyzer /></PrivateRoute>} />
       <Route path="*" element={<Navigate to="/dashboard" />} />
       <Route path="/skills" element={<PrivateRoute><SkillGap /></PrivateRoute>} />
+      <Route path="/roadmap" element={<PrivateRoute><CareerRoadmap /></PrivateRoute>} />
     </Routes>
   );
 }
