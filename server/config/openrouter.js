@@ -22,8 +22,9 @@ const askAI = async (prompt, retries = 3) => {
       return response.data.choices[0].message.content;
     } catch (error) {
       if (error.response?.status === 429 && i < retries - 1) {
-        console.log(`Rate limited, waiting 3 seconds... (attempt ${i + 1})`);
-        await new Promise(resolve => setTimeout(resolve, 3000));
+        const wait = (i + 1) * 10000;
+        console.log(`Rate limited, waiting ${wait/1000} seconds... (attempt ${i + 1})`);
+        await new Promise(resolve => setTimeout(resolve, wait));
       } else {
         throw error;
       }

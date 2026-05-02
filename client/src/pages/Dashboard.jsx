@@ -6,7 +6,6 @@ const features = [
   { title: 'Skill Gap Analysis', desc: 'Find missing skills for your dream role', icon: '🎯', path: '/skills', color: 'from-purple-600 to-purple-700' },
   { title: 'Career Roadmap', desc: 'Personalized learning path', icon: '🗺️', path: '/roadmap', color: 'from-green-600 to-green-700' },
   { title: 'Mock Interview', desc: 'Practice with AI interviewer', icon: '🎤', path: '/interview', color: 'from-orange-600 to-orange-700' },
-  { title: 'Q&A Practice', desc: 'Topic-wise interview questions', icon: '💡', path: '/qa', color: 'from-pink-600 to-pink-700' },
   { title: 'Job Match', desc: 'Find roles matching your profile', icon: '💼', path: '/jobs', color: 'from-teal-600 to-teal-700' },
 ];
 
