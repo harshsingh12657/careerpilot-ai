@@ -8,6 +8,8 @@ import SkillGap from './pages/SkillGap';
 import CareerRoadmap from './pages/CareerRoadmap';
 import MockInterview from './pages/MockInterview';
 import QAPractice from './pages/QAPractice';
+import Landing from './pages/Landing';
+import JobMatch from './pages/JobMatch';
 
 const PrivateRoute = ({ children }) => {
   const { user, loading } = useAuth();
@@ -19,19 +21,19 @@ function AppRoutes() {
   const { user } = useAuth();
   return (
     <Routes>
+      <Route path="/" element={user ? <Navigate to="/dashboard" /> : <Landing />} />
       <Route path="/login" element={user ? <Navigate to="/dashboard" /> : <Login />} />
       <Route path="/register" element={user ? <Navigate to="/dashboard" /> : <Register />} />
       <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
       <Route path="/resume" element={<PrivateRoute><ResumeAnalyzer /></PrivateRoute>} />
-      <Route path="*" element={<Navigate to="/dashboard" />} />
       <Route path="/skills" element={<PrivateRoute><SkillGap /></PrivateRoute>} />
       <Route path="/roadmap" element={<PrivateRoute><CareerRoadmap /></PrivateRoute>} />
       <Route path="/interview" element={<PrivateRoute><MockInterview /></PrivateRoute>} />
-      <Route path="/qa" element={<PrivateRoute><QAPractice /></PrivateRoute>} />
+      <Route path="*" element={<Navigate to="/" />} />
+      <Route path="/jobs" element={<PrivateRoute><JobMatch /></PrivateRoute>} />
     </Routes>
   );
 }
-
 export default function App() {
   return (
     <BrowserRouter>

@@ -22,6 +22,7 @@ app.use('/api/skills', require('./routes/skills'));
 app.use('/api/roadmap', require('./routes/roadmap'));
 app.use('/api/interview', require('./routes/interview'));
 app.use('/api/qa', require('./routes/qa'));
+app.use('/api/jobs', require('./routes/jobs'));
 
 app.get('/', (req, res) => {
   res.json({ message: '🚀 CareerPilot AI Server is running!' });
