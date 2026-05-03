@@ -8,6 +8,159 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background-color: #0f172a;
+  background-color: #0a0a0f;
   color: #f1f5f9;
+  min-height: 100vh;
 }
+
+/* Mesh grid background */
+.mesh-bg {
+  background-image: 
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Orb effects */
+.orb-pink {
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(251,113,133,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.orb-blue {
+  position: fixed;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, rgba(56,189,248,0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.orb-purple {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(167,139,250,0.06) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Glass card */
+.glass-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+}
+
+.glass-card:hover {
+  border-color: rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  transition: all 0.3s ease;
+}
+
+/* Holo nav */
+.holo-nav {
+  background: rgba(10,10,15,0.8);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  backdrop-filter: blur(20px);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+/* Gradient text */
+.grad-text {
+  background: linear-gradient(135deg, #f43f5e, #38bdf8, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.grad-text-pink {
+  background: linear-gradient(135deg, #f43f5e, #fb7185);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.grad-text-blue {
+  background: linear-gradient(135deg, #38bdf8, #818cf8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Input style */
+.holo-input {
+  width: 100%;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 12px 16px;
+  color: white;
+  font-size: 14px;
+  outline: none;
+  transition: all 0.2s;
+}
+
+.holo-input:focus {
+  border-color: rgba(56,189,248,0.4);
+  background: rgba(56,189,248,0.03);
+}
+
+.holo-input::placeholder {
+  color: rgba(255,255,255,0.2);
+}
+
+/* Button styles */
+.btn-holo {
+  background: linear-gradient(135deg, rgba(244,63,94,0.8), rgba(167,139,250,0.8));
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 12px 24px;
+}
+
+.btn-holo:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.btn-holo:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-ghost {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  color: rgba(255,255,255,0.6);
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 12px 24px;
+}
+
+.btn-ghost:hover {
+  background: rgba(255,255,255,0.08);
+  color: white;
+}
+
+/* Tag styles */
+.tag-pink { background: rgba(244,63,94,0.1); color: #f43f5e; border: 1px solid rgba(244,63,94,0.2); padding: 3px 10px; border-radius: 20px; font-size: 11px; }
+.tag-blue { background: rgba(56,189,248,0.1); color: #38bdf8; border: 1px solid rgba(56,189,248,0.2); padding: 3px 10px; border-radius: 20px; font-size: 11px; }
+.tag-purple { background: rgba(167,139,250,0.1); color: #a78bfa; border: 1px solid rgba(167,139,250,0.2); padding: 3px 10px; border-radius: 20px; font-size: 11px; }
+.tag-green { background: rgba(52,211,153,0.1); color: #34d399; border: 1px solid rgba(52,211,153,0.2); padding: 3px 10px; border-radius: 20px; font-size: 11px; }
+.tag-teal { background: rgba(20,184,166,0.1); color: #2dd4bf; border: 1px solid rgba(20,184,166,0.2); padding: 3px 10px; border-radius: 20px; font-size: 11px; }

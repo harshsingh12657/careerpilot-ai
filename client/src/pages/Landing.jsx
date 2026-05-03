@@ -1,66 +1,44 @@
 import { useNavigate } from 'react-router-dom';
+import Layout from '../components/Layout';
 
 const features = [
-  { icon: '📄', title: 'Resume Analyzer', desc: 'Upload your resume and get instant AI-powered feedback, score, and improvement suggestions.' },
-  { icon: '🎯', title: 'Skill Gap Analysis', desc: 'Find exactly what skills you need for your dream role and get a prioritized learning plan.' },
-  { icon: '🗺️', title: 'Career Roadmap', desc: 'Get a personalized step-by-step roadmap with resources and milestones to reach your goal.' },
-  { icon: '🎤', title: 'Mock Interview', desc: 'Practice with an AI interviewer, get real-time feedback and a full performance report.' },
-];
-
-const stats = [
-  { value: '4+', label: 'AI Features' },
-  { value: '100%', label: 'Free to Use' },
-  { value: 'AI', label: 'Powered' },
-  { value: '24/7', label: 'Available' },
+  { tag: 'tag-pink', tagLabel: 'Resume', title: 'Resume Analyzer', desc: 'Upload your resume and get instant AI-powered feedback, score, and improvement suggestions.', accent: '#f43f5e' },
+  { tag: 'tag-blue', tagLabel: 'Skills', title: 'Skill Gap Analysis', desc: 'Find exactly what skills you need for your dream role with a prioritized learning plan.', accent: '#38bdf8' },
+  { tag: 'tag-purple', tagLabel: 'Roadmap', title: 'Career Roadmap', desc: 'Get a personalized step-by-step roadmap with resources and milestones.', accent: '#a78bfa' },
+  { tag: 'tag-green', tagLabel: 'Interview', title: 'Mock Interview', desc: 'Practice with an AI interviewer and get real-time feedback and a performance report.', accent: '#34d399' },
 ];
 
 export default function Landing() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-slate-900">
-      {/* Navbar */}
-      <nav className="border-b border-slate-800 px-6 py-4 flex items-center justify-between max-w-6xl mx-auto">
-        <h1 className="text-2xl font-bold text-blue-400">CareerPilot AI</h1>
-        <div className="flex gap-3">
-          <button
-            onClick={() => navigate('/login')}
-            className="text-slate-300 hover:text-white px-4 py-2 rounded-lg transition"
-          >
-            Login
-          </button>
-          <button
-            onClick={() => navigate('/register')}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition font-medium"
-          >
-            Get Started Free
-          </button>
+    <Layout>
+      {/* Nav */}
+      <nav className="holo-nav px-6 py-4">
+        <div className="max-w-6xl mx-auto flex items-center justify-between">
+          <h1 className="text-lg font-bold grad-text">CareerPilot AI</h1>
+          <div className="flex gap-3">
+            <button onClick={() => navigate('/login')} className="btn-ghost" style={{ padding: '8px 18px', fontSize: '13px' }}>Login</button>
+            <button onClick={() => navigate('/register')} className="btn-holo" style={{ padding: '8px 18px', fontSize: '13px' }}>Get Started Free</button>
+          </div>
         </div>
       </nav>
 
       {/* Hero */}
-      <div className="max-w-6xl mx-auto px-6 py-24 text-center">
-        <div className="inline-block bg-blue-500/10 border border-blue-500/30 text-blue-400 px-4 py-1.5 rounded-full text-sm font-medium mb-6">
-          🚀 AI-Powered Career Guidance
-        </div>
-        <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+      <div className="max-w-6xl mx-auto px-6 py-28 text-center">
+        <div className="tag-blue inline-block mb-6">AI-Powered Career Guidance Platform</div>
+        <h1 className="text-6xl font-bold text-white mb-6 leading-tight">
           Land Your Dream Job<br />
-          <span className="text-blue-400">With AI Guidance</span>
+          <span className="grad-text">With AI Guidance</span>
         </h1>
-        <p className="text-slate-400 text-xl mb-10 max-w-2xl mx-auto">
-          CareerPilot AI analyzes your resume, identifies skill gaps, builds your career roadmap, and prepares you for interviews — all powered by AI.
+        <p style={{ color: 'rgba(255,255,255,0.3)', fontSize: '18px', maxWidth: '600px', margin: '0 auto 40px' }}>
+          CareerPilot AI analyzes your resume, identifies skill gaps, builds your career roadmap, and prepares you for interviews.
         </p>
         <div className="flex gap-4 justify-center flex-wrap">
-          <button
-            onClick={() => navigate('/register')}
-            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-4 rounded-xl transition text-lg"
-          >
+          <button onClick={() => navigate('/register')} className="btn-holo" style={{ padding: '14px 32px', fontSize: '16px' }}>
             Start For Free →
           </button>
-          <button
-            onClick={() => navigate('/login')}
-            className="bg-slate-800 hover:bg-slate-700 text-white font-semibold px-8 py-4 rounded-xl transition text-lg border border-slate-700"
-          >
+          <button onClick={() => navigate('/login')} className="btn-ghost" style={{ padding: '14px 32px', fontSize: '16px' }}>
             Sign In
           </button>
         </div>
@@ -69,10 +47,15 @@ export default function Landing() {
       {/* Stats */}
       <div className="max-w-4xl mx-auto px-6 mb-24">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {stats.map((stat) => (
-            <div key={stat.label} className="bg-slate-800 border border-slate-700 rounded-2xl p-6 text-center">
-              <p className="text-3xl font-bold text-blue-400 mb-1">{stat.value}</p>
-              <p className="text-slate-400 text-sm">{stat.label}</p>
+          {[
+            { value: '5+', label: 'AI Features' },
+            { value: '100%', label: 'Free to Use' },
+            { value: 'AI', label: 'Powered' },
+            { value: '24/7', label: 'Available' },
+          ].map((s) => (
+            <div key={s.label} className="glass-card p-6 text-center">
+              <p className="text-3xl font-bold grad-text mb-1">{s.value}</p>
+              <p style={{ color: 'rgba(255,255,255,0.3)', fontSize: '12px' }}>{s.label}</p>
             </div>
           ))}
         </div>
@@ -80,14 +63,17 @@ export default function Landing() {
 
       {/* Features */}
       <div className="max-w-6xl mx-auto px-6 mb-24">
-        <h2 className="text-3xl font-bold text-white text-center mb-4">Everything You Need</h2>
-        <p className="text-slate-400 text-center mb-12">Four powerful AI tools to supercharge your career</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl font-bold text-white mb-3">Everything You Need</h2>
+          <p style={{ color: 'rgba(255,255,255,0.3)' }}>Four powerful AI tools to supercharge your career</p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {features.map((f) => (
-            <div key={f.title} className="bg-slate-800 border border-slate-700 rounded-2xl p-8 hover:border-blue-500 transition">
-              <div className="text-4xl mb-4">{f.icon}</div>
-              <h3 className="text-white font-semibold text-xl mb-2">{f.title}</h3>
-              <p className="text-slate-400">{f.desc}</p>
+            <div key={f.title} className="glass-card p-8">
+              <span className={f.tag}>{f.tagLabel}</span>
+              <h3 className="text-white font-semibold text-xl mt-4 mb-2">{f.title}</h3>
+              <p style={{ color: 'rgba(255,255,255,0.3)', fontSize: '14px' }}>{f.desc}</p>
+              <div style={{ height: '1px', background: `linear-gradient(90deg, ${f.accent}40, transparent)`, marginTop: '20px' }} />
             </div>
           ))}
         </div>
@@ -95,22 +81,19 @@ export default function Landing() {
 
       {/* CTA */}
       <div className="max-w-4xl mx-auto px-6 mb-24">
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-12 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">Ready to Pilot Your Career?</h2>
-          <p className="text-white/80 mb-8 text-lg">Join now and get instant access to all AI features — completely free.</p>
-          <button
-            onClick={() => navigate('/register')}
-            className="bg-white text-blue-600 font-bold px-8 py-4 rounded-xl hover:bg-blue-50 transition text-lg"
-          >
+        <div className="glass-card p-16 text-center" style={{ border: '1px solid rgba(167,139,250,0.15)' }}>
+          <h2 className="text-3xl font-bold text-white mb-4">Ready to <span className="grad-text">Pilot Your Career?</span></h2>
+          <p style={{ color: 'rgba(255,255,255,0.3)', marginBottom: '32px' }}>Join now and get instant access to all AI features — completely free.</p>
+          <button onClick={() => navigate('/register')} className="btn-holo" style={{ padding: '14px 32px', fontSize: '16px' }}>
             Get Started Free →
           </button>
         </div>
       </div>
 
       {/* Footer */}
-      <div className="border-t border-slate-800 py-8 text-center text-slate-500 text-sm">
-        <p>© 2024 CareerPilot AI — Built with ❤️ as a Final Year Project</p>
+      <div style={{ borderTop: '1px solid rgba(255,255,255,0.05)', padding: '24px', textAlign: 'center', color: 'rgba(255,255,255,0.2)', fontSize: '13px' }}>
+        © 2024 CareerPilot AI — Built with ❤️ as a Final Year Project
       </div>
-    </div>
+    </Layout>
   );
 }

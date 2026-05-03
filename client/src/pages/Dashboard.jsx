@@ -1,67 +1,78 @@
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import Layout from '../components/Layout';
 
 const features = [
-  { title: 'Resume Analyzer', desc: 'AI-powered resume feedback', icon: '📄', path: '/resume', color: 'from-blue-600 to-blue-700' },
-  { title: 'Skill Gap Analysis', desc: 'Find missing skills for your dream role', icon: '🎯', path: '/skills', color: 'from-purple-600 to-purple-700' },
-  { title: 'Career Roadmap', desc: 'Personalized learning path', icon: '🗺️', path: '/roadmap', color: 'from-green-600 to-green-700' },
-  { title: 'Mock Interview', desc: 'Practice with AI interviewer', icon: '🎤', path: '/interview', color: 'from-orange-600 to-orange-700' },
-  { title: 'Job Match', desc: 'Find roles matching your profile', icon: '💼', path: '/jobs', color: 'from-teal-600 to-teal-700' },
+  { title: 'Resume Analyzer', desc: 'AI-powered resume feedback & scoring', tag: 'tag-pink', tagLabel: 'Resume', path: '/resume', accent: '#f43f5e' },
+  { title: 'Skill Gap Analysis', desc: 'Find missing skills for your dream role', tag: 'tag-blue', tagLabel: 'Skills', path: '/skills', accent: '#38bdf8' },
+  { title: 'Career Roadmap', desc: 'Personalized step-by-step learning path', tag: 'tag-purple', tagLabel: 'Roadmap', path: '/roadmap', accent: '#a78bfa' },
+  { title: 'Mock Interview', desc: 'Practice with AI interviewer', tag: 'tag-green', tagLabel: 'Interview', path: '/interview', accent: '#34d399' },
+  { title: 'Job Match', desc: 'Find roles matching your profile', tag: 'tag-teal', tagLabel: 'Jobs', path: '/jobs', accent: '#2dd4bf' },
 ];
 
 export default function Dashboard() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    logout();
-    navigate('/login');
-  };
-
   return (
-    <div className="min-h-screen bg-slate-900">
-      {/* Navbar */}
-      <nav className="bg-slate-800 border-b border-slate-700 px-6 py-4 flex items-center justify-between">
-        <h1 className="text-xl font-bold text-blue-400">CareerPilot AI</h1>
-        <div className="flex items-center gap-4">
-          <span className="text-slate-300 text-sm">👋 {user?.name}</span>
-          <button
-            onClick={handleLogout}
-            className="text-slate-400 hover:text-white text-sm transition"
-          >
-            Logout
-          </button>
+    <Layout>
+      {/* Nav */}
+      <nav className="holo-nav px-6 py-4">
+        <div className="max-w-6xl mx-auto flex items-center justify-between">
+          <h1 className="text-lg font-bold grad-text">CareerPilot AI</h1>
+          <div className="flex items-center gap-4">
+            <span style={{ color: 'rgba(255,255,255,0.4)', fontSize: '13px' }}>👋 {user?.name}</span>
+            <button onClick={() => { logout(); navigate('/login'); }} style={{ background: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.5)', padding: '6px 14px', borderRadius: '8px', fontSize: '13px', cursor: 'pointer' }}>
+              Logout
+            </button>
+          </div>
         </div>
       </nav>
 
-      {/* Main */}
-      <div className="max-w-6xl mx-auto px-6 py-10">
-        <div className="mb-10">
-          <h2 className="text-3xl font-bold text-white mb-2">
-            Welcome back, {user?.name?.split(' ')[0]}! 🚀
+      <div className="max-w-6xl mx-auto px-6 py-12">
+        {/* Header */}
+        <div className="mb-12">
+          <div className="tag-pink inline-block mb-4">AI Career Platform</div>
+          <h2 className="text-4xl font-bold text-white mb-3">
+            Welcome back, <span className="grad-text">{user?.name?.split(' ')[0]}</span>
           </h2>
-          <p className="text-slate-400">What would you like to work on today?</p>
+          <p style={{ color: 'rgba(255,255,255,0.3)', fontSize: '15px' }}>Your AI-powered career tools are ready. What are we working on today?</p>
         </div>
 
-        {/* Feature Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feature) => (
+        {/* Stats */}
+        <div className="grid grid-cols-3 gap-4 mb-10">
+          {[
+            { label: 'AI Features', value: '5' },
+            { label: 'Always Free', value: '100%' },
+            { label: 'AI Powered', value: '24/7' },
+          ].map((stat) => (
+            <div key={stat.label} className="glass-card p-5 text-center">
+              <p className="text-3xl font-bold grad-text mb-1">{stat.value}</p>
+              <p style={{ color: 'rgba(255,255,255,0.3)', fontSize: '12px' }}>{stat.label}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Feature Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {features.map((f) => (
             <div
-              key={feature.title}
-              onClick={() => navigate(feature.path)}
-              className="bg-slate-800 border border-slate-700 rounded-2xl p-6 cursor-pointer hover:border-blue-500 hover:scale-105 transition-all duration-200 group"
+              key={f.title}
+              onClick={() => navigate(f.path)}
+              className="glass-card p-6 cursor-pointer group"
+              style={{ transition: 'all 0.3s ease' }}
             >
-              <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${feature.color} flex items-center justify-center text-2xl mb-4`}>
-                {feature.icon}
+              <div className="flex items-start justify-between mb-4">
+                <span className={f.tag}>{f.tagLabel}</span>
+                <span style={{ color: 'rgba(255,255,255,0.2)', fontSize: '18px', transition: 'all 0.2s' }}>→</span>
               </div>
-              <h3 className="text-white font-semibold text-lg mb-1 group-hover:text-blue-400 transition">
-                {feature.title}
-              </h3>
-              <p className="text-slate-400 text-sm">{feature.desc}</p>
+              <h3 className="text-white font-semibold text-lg mb-2">{f.title}</h3>
+              <p style={{ color: 'rgba(255,255,255,0.3)', fontSize: '13px' }}>{f.desc}</p>
+              <div style={{ height: '1px', background: `linear-gradient(90deg, ${f.accent}40, transparent)`, marginTop: '16px' }} />
             </div>
           ))}
         </div>
       </div>
-    </div>
+    </Layout>
   );
 }
